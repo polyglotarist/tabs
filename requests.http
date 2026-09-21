@@ -1,0 +1,40 @@
+### 1. Create an artist
+POST http://localhost:8080/api/artists
+Content-Type: application/json
+
+{
+  "name": "The Weatherbys",
+  "bio": "A fictional folk-rock duo, test data for the tabs app."
+}
+
+### 2. Get all artists
+GET http://localhost:8080/api/artists
+
+### 3. Create a song (replace artist.id below after running #1)
+POST http://localhost:8080/api/songs
+Content-Type: application/json
+
+{
+  "artist": { "id": 1 },
+  "title": "Roads We Used to Know",
+  "originalKey": "G",
+  "capo": 0,
+  "tempo": 96,
+  "difficulty": "Intermediate",
+  "body": "[G]Somewhere over the [D]rainbow\n[Em]Way up [C]high\n[G]There's a land that I [D]heard of\n[C]Once in a [G]lullaby"
+}
+
+### 4. Get the song by id
+GET http://localhost:8080/api/songs/1
+
+### 5. Transpose it up 2 semitones (sharps)
+GET http://localhost:8080/api/songs/1/transpose?semitones=2
+
+### 6. Transpose it down 3 semitones, using flats
+GET http://localhost:8080/api/songs/1/transpose?semitones=-3&useFlats=true
+
+### 7. Search songs by title
+GET http://localhost:8080/api/songs?title=roads
+
+### 8. Search songs by artist name
+GET http://localhost:8080/api/songs?artist=weather
